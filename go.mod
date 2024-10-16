@@ -1,3 +1,3 @@
-module github.com/CaiJimmy/shane-hugo-theme
+module github.com/zhangxingeng/shane-hugo-theme
 
-go 1.17
+go 1.23
