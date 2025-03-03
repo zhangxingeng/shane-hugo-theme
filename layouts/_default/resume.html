@@ -1,0 +1,40 @@
+{{ define "head" }}
+{{ partial "resume/head.html" . }}
+{{ end }}
+
+
+{{ define "main" }}
+
+<div class="resume-container">
+    <div class="container px-3 px-lg-5 resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg display-4">
+        {{ partial "resume/header.html" . }}
+        <hr>
+        {{ if $.Site.Data.resume.summary.enable }}
+        {{ partial "resume/summary.html" . }}
+        {{ end }}
+        <hr>
+        <div class="resume-body">
+            <div class="row">
+                <div class="resume-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
+                    {{ if $.Site.Data.resume.experience.enable }}
+                    {{ partial "resume/experience.html" . }}
+                    {{ end }}
+                    {{ if $.Site.Data.resume.projects.enable }}
+                    {{ partial "resume/projects.html" . }}
+                    {{ end }}
+                    {{ if $.Site.Data.resume.information.enable }}
+                    {{ partial "resume/information.html" . }}
+                    {{ end }}
+                </div><!--//resume-main-->
+                {{ partial "resume/sidebar.html" . }}
+            </div><!--//row-->
+        </div><!--//resume-body-->
+        <hr>
+        {{ if $.Site.Data.resume.social.enable }}
+        {{ partial "resume/social.html" . }}
+        {{ end }}
+    </div><!--//container-->
+</div>
+{{ partial "resume/scripts.html" . }}
+
+{{ end }}
