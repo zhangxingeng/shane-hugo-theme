@@ -1,9 +1,6 @@
 /*!
 *   Hugo Theme Stack
 *
-*   @author: Jimmy Cai
-*   @website: https://jimmycai.com
-*   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
 import StackGallery from "ts/gallery";
 import { getColor } from 'ts/color';

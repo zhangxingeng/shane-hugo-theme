@@ -2,11 +2,11 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Stack"
-license = "GPL-3.0-only"
-licenselink = "https://github.com/CaiJimmy/hugo-theme-stack/blob/master/LICENSE"
+license = "MIT"
+licenselink = "https://example.com"
 description = "Card-style Hugo theme designed for bloggers"
-homepage = "https://github.com/CaiJimmy/hugo-theme-stack"
-demosite = "https://demo.stack.jimmycai.com"
+homepage = "https://example.com"
+demosite = "https://example.com"
 
 tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 
@@ -23,5 +23,5 @@ features = [
 min_version = "0.123.0"
 
 [author]
-name = "Jimmy Cai"
-homepage = "https://jimmycai.com"
+name = "Shane"
+homepage = "https://shanechang.com"
