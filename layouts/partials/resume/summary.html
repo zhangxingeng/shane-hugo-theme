@@ -2,7 +2,13 @@
     <div class="resume-intro-container">
         {{ if $.Site.Data.resume.profile.avatar }}
         <div class="resume-profile-image-container">
-            <img class="resume-profile-image" src="{{ .Site.BaseURL }}assets/images/{{ $.Site.Data.resume.profile.avatar }}" alt="Profile image">
+            <!-- MODIFIED LINE BELOW -->
+            {{ $avatar := resources.Get $.Site.Data.resume.profile.avatar }}
+            {{ if $avatar }}
+            <img class="resume-profile-image" src="{{ $avatar.RelPermalink }}" alt="Profile image">
+            {{ else }}
+            <img class="resume-profile-image" src="{{ .Site.BaseURL }}{{ $.Site.Data.resume.profile.avatar }}" alt="Profile image">
+            {{ end }}
         </div>
         {{ end }}
         
