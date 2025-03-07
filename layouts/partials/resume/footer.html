@@ -1,6 +1,3 @@
 <footer class="resume-footer text-center mt-4">
-        <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a class="theme-link"
-                href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-        <br>
-        <small class="copyright">{{ now.Year }} &copy; {{ with $.Site.Data.resume.footer.copyright }}{{ . | markdownify }}{{ else }}Ported to Hugo by <a href="https://github.com/cowboysmall" target="_blank">CowboySmall</a>{{ end }}</small>
+        <small class="copyright">{{ with $.Site.Data.resume.footer.copyright }}{{ . | markdownify }}{{ else }}<a href="https://github.com/cowboysmall" target="_blank">CowboySmall</a>{{ end }}</small>
     </footer>
