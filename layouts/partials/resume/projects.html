@@ -1,17 +1,15 @@
-<section class="project-section py-3">
-
-    <h3 class="text-uppercase resume-section-heading mb-4">Projects</h3>
-
+<section class="resume-section project-section">
+    <h3 class="resume-section-heading">Projects</h3>
+    
     {{ range $.Site.Data.resume.projects.list }}
-    <div class="item mb-3">
-        <div class="item-heading row align-items-center mb-2">
-            <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">{{ .title }}</h4>
-            <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-left text-md-right">{{ .meta }}</div>
+    <div class="project-item">
+        <div class="project-header">
+            <h4 class="project-title">{{ .title }}</h4>
+            <div class="project-meta">{{ .meta }}</div>
         </div>
-        <div class="item-content">
+        <div class="project-description">
             <p>{{ .tagline }}</p>
         </div>
-    </div><!--//item-->
+    </div>
     {{ end }}
-
-</section><!--//project-section-->
+</section>

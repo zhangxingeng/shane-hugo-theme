@@ -1,6 +1,4 @@
-<aside class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-
-
+<div class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
     {{ if $.Site.Data.resume.education.enable }}
     {{ partial "resume/education.html" . }}
     {{ end }}
@@ -20,5 +18,4 @@
     {{ if $.Site.Data.resume.interests.enable }}
     {{ partial "resume/interests.html" . }}
     {{ end }}
-
-</aside><!--//resume-aside-->
+</div><!--//resume-aside-->

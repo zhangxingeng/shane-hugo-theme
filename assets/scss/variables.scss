@@ -17,6 +17,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --accent-color-darker: #2c3e50;
     --accent-color-text: #fff;
     --body-text-color: #707070;
+    --svg-filter: filter: invert(0%) sepia(5%) saturate(7500%) hue-rotate(261deg) brightness(98%) contrast(106%);
 
     --tag-border-radius: 4px;
 
@@ -33,6 +34,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --body-text-color: rgba(255, 255, 255, 0.7);
         --scrollbar-thumb: hsl(0, 0%, 40%);
         --scrollbar-track: var(--body-background);
+        --svg-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(138deg) brightness(105%) contrast(102%);
     }
 }
 

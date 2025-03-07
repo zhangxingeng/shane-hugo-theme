@@ -1,15 +1,13 @@
-<section class="education-section py-3">
-
-    <h3 class="text-uppercase resume-section-heading mb-4">Education</h3>
-
-    <ul class="list-unstyled resume-education-list">
+<section class="resume-section education-section">
+    <h3 class="resume-section-heading">Education</h3>
+    
+    <ul class="resume-education-list">
         {{ range $.Site.Data.resume.education.list }}
-        <li class="mb-3">
-            <div class="resume-degree font-weight-bold">{{ .degree }}</div>
-            <div class="resume-degree-org text-muted">{{ .university }}</div>
-            <div class="resume-degree-time text-muted">{{ .dates }}</div>
+        <li class="resume-timeline-item">
+            <div class="resume-degree">{{ .degree }}</div>
+            <div class="resume-degree-org">{{ .university }}</div>
+            <div class="resume-degree-time">{{ .dates }}</div>
         </li>
         {{ end }}
     </ul>
-
-</section><!--//education-section-->
+</section>

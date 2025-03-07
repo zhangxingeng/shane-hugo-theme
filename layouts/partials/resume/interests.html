@@ -1,11 +1,12 @@
-<section class="skills-section py-3">
-
-    <h3 class="text-uppercase resume-section-heading mb-4">Interests</h3>
-
-    <ul class="list-unstyled resume-interests-list mb-0">
+<section class="resume-section interests-section">
+    <h3 class="resume-section-heading">Interests</h3>
+    
+    <div class="interests-list">
         {{ range $.Site.Data.resume.interests.list }}
-        <li class="mb-2">{{ .name }}</li>
+        <div class="interest-item">
+            <i class="fas fa-circle icon"></i>
+            <span>{{ .name }}</span>
+        </div>
         {{ end }}
-    </ul>
-
-</section><!--//certificates-section-->
+    </div>
+</section>

@@ -16,9 +16,15 @@
                     {{ $avatar := resources.Get (.src) }}
                     
                     {{ if $avatar }}
-                        {{ $avatarResized := $avatar.Resize "300x" }}
-                        <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-                            height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                        {{ if eq $avatar.MediaType.SubType "svg" }}
+                            <!-- Handle SVG images without resizing -->
+                            <img src="{{ $avatar.RelPermalink }}" class="site-logo" loading="lazy" alt="Avatar">
+                        {{ else }}
+                            <!-- Resize raster images -->
+                            {{ $avatarResized := $avatar.Resize "300x" }}
+                            <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
+                                height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                        {{ end }}
                     {{ else }}
                         {{ errorf "Failed loading avatar from %q" . }}
                     {{ end }}

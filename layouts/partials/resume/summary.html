@@ -1,16 +1,13 @@
-<div class="resume-intro py-3">
-
-    <div class="media flex-column flex-md-row align-items-center">
-
+<div class="resume-intro">
+    <div class="resume-intro-container">
         {{ if $.Site.Data.resume.profile.avatar }}
-        <img class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto"
-            src="{{ .Site.BaseURL }}assets/images/{{ $.Site.Data.resume.profile.avatar }}" alt="image">
+        <div class="resume-profile-image-container">
+            <img class="resume-profile-image" src="{{ .Site.BaseURL }}assets/images/{{ $.Site.Data.resume.profile.avatar }}" alt="Profile image">
+        </div>
         {{ end }}
-
-        <div class="media-body text-left">
-            <p class="mb-0">{{ $.Site.Data.resume.summary.text | markdownify }}</p>
-        </div><!--//media-body-->
-
+        
+        <div class="resume-summary">
+            <p>{{ $.Site.Data.resume.summary.text | markdownify }}</p>
+        </div>
     </div>
-
-</div><!--//resume-intro-->
+</div>
