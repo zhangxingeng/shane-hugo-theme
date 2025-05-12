@@ -4,7 +4,8 @@
         <h2 class="article-subtitle">{{ T "notFound.subtitle" }}</h2>
     </div>
 
-    {{- $query := first 1 (where .Site.Pages "Layout" "==" "search") -}}
+    {{- $byLang := where .Site.Pages "Lang" .Site.Language.Lang -}}
+    {{- $query := first 1 (where $byLang "Layout" "==" "search") -}}
     {{- $searchPage := index $query 0 -}}
 
     {{- with $searchPage -}}
