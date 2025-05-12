@@ -1,19 +1,21 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
+
 <div class="resume-intro">
     <div class="resume-intro-container">
-        {{ if $.Site.Data.resume.profile.avatar }}
+        {{ if $resume.profile.avatar }}
         <div class="resume-profile-image-container">
             <!-- MODIFIED LINE BELOW -->
-            {{ $avatar := resources.Get $.Site.Data.resume.profile.avatar }}
+            {{ $avatar := resources.Get $resume.profile.avatar }}
             {{ if $avatar }}
             <img class="resume-profile-image" src="{{ $avatar.RelPermalink }}" alt="Profile image">
             {{ else }}
-            <img class="resume-profile-image" src="{{ .Site.BaseURL }}{{ $.Site.Data.resume.profile.avatar }}" alt="Profile image">
+            <img class="resume-profile-image" src="{{ .Site.BaseURL }}{{ $resume.profile.avatar }}" alt="Profile image">
             {{ end }}
         </div>
         {{ end }}
         
         <div class="resume-summary">
-            <p>{{ $.Site.Data.resume.summary.text | markdownify }}</p>
+            <p>{{ $resume.summary.text | markdownify }}</p>
         </div>
     </div>
 </div>

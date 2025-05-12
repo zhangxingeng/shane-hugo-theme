@@ -1,6 +1,8 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
+
 <div class="resume-social">
     <ul class="resume-social-list">
-        {{ range $.Site.Data.resume.social.list }}
+        {{ range $resume.social.list }}
         <li class="social-item">
             <a class="resume-link" href="{{ .url }}" target="_blank">
                 <i class="{{ .icon }}"></i>

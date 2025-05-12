@@ -1,8 +1,10 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
+
 <section class="resume-section education-section">
     <h3 class="resume-section-heading">Education</h3>
     
     <ul class="resume-education-list">
-        {{ range $.Site.Data.resume.education.list }}
+        {{ range $resume.education.list }}
         <li class="resume-timeline-item">
             <div class="resume-degree">{{ .degree }}</div>
             <div class="resume-degree-org">{{ .university }}</div>

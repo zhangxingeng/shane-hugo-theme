@@ -1,8 +1,9 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
 <section class="resume-section languages-section">
     <h3 class="resume-section-heading">Languages</h3>
     
     <ul class="resume-lang-list">
-        {{ range $.Site.Data.resume.languages.list }}
+        {{ range $resume.languages.list }}
         <li class="lang-item">
             <span class="lang-name">{{ .name }}</span>
             <span class="lang-level">({{ .level }})</span>

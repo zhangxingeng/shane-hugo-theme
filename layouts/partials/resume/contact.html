@@ -1,6 +1,8 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
+
 <div class="resume-contact">
     <ul class="contact-list">
-        {{ range $.Site.Data.resume.contact.list }}
+        {{ range $resume.contact.list }}
         <li class="contact-item">
             <i class="{{ .icon }} icon"></i>
             <a class="resume-link" href="{{ .url | safeURL }}">{{ .text }}</a>
@@ -8,7 +10,7 @@
         {{ end }}
         <li class="contact-item">
             <i class="fas fa-map-marker-alt icon"></i>
-            <span>{{ $.Site.Data.resume.contact.location }}</span>
+            <span>{{ $resume.contact.location }}</span>
         </li>
     </ul>
 </div>

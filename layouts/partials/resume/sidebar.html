@@ -1,21 +1,22 @@
+{{ $resume := index site.Data .Site.Language.Lang "resume" }}
 <div class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-    {{ if $.Site.Data.resume.education.enable }}
+    {{ if $resume.education.enable }}
     {{ partial "resume/education.html" . }}
     {{ end }}
 
-    {{ if $.Site.Data.resume.awards.enable }}
+    {{ if $resume.awards.enable }}
     {{ partial "resume/awards.html" . }}
     {{ end }}
 
-    {{ if $.Site.Data.resume.skills.enable }}
+    {{ if $resume.skills.enable }}
     {{ partial "resume/skills.html" . }}
     {{ end }}
 
-    {{ if $.Site.Data.resume.languages.enable }}
+    {{ if $resume.languages.enable }}
     {{ partial "resume/languages.html" . }}
     {{ end }}
 
-    {{ if $.Site.Data.resume.interests.enable }}
+    {{ if $resume.interests.enable }}
     {{ partial "resume/interests.html" . }}
     {{ end }}
 </div><!--//resume-aside-->
