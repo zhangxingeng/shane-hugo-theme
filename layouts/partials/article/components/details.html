@@ -25,7 +25,8 @@
 
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
     {{ $showDate := not .Date.IsZero }}
-    {{ $showFooter := or $showDate $showReadingTime }}
+    {{ $showCopyButton := or (.OutputFormats.Get "LLMS") (.OutputFormats.Get "MARKDOWN") }}
+    {{ $showFooter := or $showDate $showReadingTime $showCopyButton }}
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
@@ -43,6 +44,16 @@
                 <time class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
                 </time>
+            </div>
+        {{ end }}
+        
+        {{/* Copy as Markdown button */}}
+        {{ if $showCopyButton }}
+            <div class="copy-as-markdown">
+                <button class="copy-md-button" title="Copy as Markdown">
+                    {{ partial "helper/icon" "clipboard" }}
+                    <span>Copy as Markdown</span>
+                </button>
             </div>
         {{ end }}
     </footer>

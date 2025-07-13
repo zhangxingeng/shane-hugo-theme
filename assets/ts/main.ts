@@ -25,6 +25,11 @@ let Stack = {
         }
 
         /**
+         * Initialize copy as markdown functionality
+         */
+        Stack.initCopyAsMarkdown();
+
+        /**
          * Add linear gradient background to tile style article
          */
         const articleTile = document.querySelector('.article-list--tile');
@@ -89,6 +94,52 @@ let Stack = {
         });
 
         new StackColorScheme(document.getElementById('dark-mode-toggle'));
+    },
+
+    initCopyAsMarkdown: () => {
+        const copyButtons = document.querySelectorAll('.copy-md-button');
+        
+        // Check for llms.txt format first, then fallback to markdown
+        let llmsLink = document.querySelector('link[type="text/plain"]') as HTMLLinkElement;
+        const markdownLink = document.querySelector('link[type="text/markdown"]') as HTMLLinkElement;
+        
+        // If no plain text link, try to construct llms.txt URL
+        if (!llmsLink && markdownLink) {
+            const currentUrl = new URL(window.location.href);
+            const llmsUrl = currentUrl.pathname.endsWith('/') 
+                ? currentUrl.pathname + 'llms.txt'
+                : currentUrl.pathname + '/llms.txt';
+            llmsLink = { href: llmsUrl } as HTMLLinkElement;
+        }
+        
+        const preferredLink = llmsLink || markdownLink;
+        if (preferredLink) {
+            document.body.classList.add('has-markdown');
+        }
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault();
+                
+                try {
+                    const response = await fetch(preferredLink.href);
+                    const content = await response.text();
+                    await navigator.clipboard.writeText(content);
+                    
+                    // Show feedback
+                    const span = button.querySelector('span') as HTMLElement;
+                    const originalText = span.textContent;
+                    span.textContent = 'Copied!';
+                    
+                    setTimeout(() => {
+                        span.textContent = originalText;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy content:', err);
+                    alert('Failed to copy content. Please try again.');
+                }
+            });
+        });
     }
 }
 
