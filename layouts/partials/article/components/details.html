@@ -50,9 +50,12 @@
         {{/* Copy as Markdown button */}}
         {{ if $showCopyButton }}
             <div class="copy-as-markdown">
-                <button class="copy-md-button" title="Copy as Markdown">
+                <button class="copy-md-button" 
+                        title="{{ T "article.copyAsMarkdown" }}"
+                        data-copy-text="{{ T "article.copyAsMarkdown" }}"
+                        data-copied-text="{{ T "article.copied" }}">
                     {{ partial "helper/icon" "clipboard" }}
-                    <span>Copy as Markdown</span>
+                    <span>{{ T "article.copyAsMarkdown" }}</span>
                 </button>
             </div>
         {{ end }}

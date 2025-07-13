@@ -126,10 +126,11 @@ let Stack = {
                     const content = await response.text();
                     await navigator.clipboard.writeText(content);
                     
-                    // Show feedback
+                    // Show feedback using i18n translations
                     const span = button.querySelector('span') as HTMLElement;
-                    const originalText = span.textContent;
-                    span.textContent = 'Copied!';
+                    const originalText = button.getAttribute('data-copy-text') || span.textContent;
+                    const copiedText = button.getAttribute('data-copied-text') || 'Copied!';
+                    span.textContent = copiedText;
                     
                     setTimeout(() => {
                         span.textContent = originalText;
