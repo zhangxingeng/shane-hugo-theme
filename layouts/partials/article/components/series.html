@@ -1,0 +1,71 @@
+{{/* Series navigation and information partial */}}
+{{ if .Params.series }}
+    {{ range (.GetTerms "series") }}
+        <div class="series-info">
+            <div class="series-header">
+                <span class="series-badge">Series</span>
+                <h4 class="series-title">
+                    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                </h4>
+            </div>
+            
+            {{/* Get all posts in this series */}}
+            {{ $seriesPosts := .Pages.ByDate }}
+            {{ $currentPost := $.Page }}
+            
+            {{/* Find current post index and get prev/next */}}
+            {{ $currentIndex := 0 }}
+            {{ $prevPost := false }}
+            {{ $nextPost := false }}
+            
+            {{ range $index, $post := $seriesPosts }}
+                {{ if eq $post.Permalink $currentPost.Permalink }}
+                    {{ $currentIndex = $index }}
+                    {{ if gt $index 0 }}
+                        {{ $prevPost = index $seriesPosts (sub $index 1) }}
+                    {{ end }}
+                    {{ if lt $index (sub (len $seriesPosts) 1) }}
+                        {{ $nextPost = index $seriesPosts (add $index 1) }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+            
+            {{/* Navigation buttons */}}
+            {{ if or $prevPost $nextPost }}
+                <div class="series-navigation">
+                    {{ if $prevPost }}
+                        <a href="{{ $prevPost.Permalink }}" class="series-nav-button prev">
+                            <span class="nav-direction">← Previous</span>
+                            <span class="nav-title">{{ $prevPost.Title }}</span>
+                        </a>
+                    {{ end }}
+                    
+                    {{ if $nextPost }}
+                        <a href="{{ $nextPost.Permalink }}" class="series-nav-button next">
+                            <span class="nav-direction">Next →</span>
+                            <span class="nav-title">{{ $nextPost.Title }}</span>
+                        </a>
+                    {{ end }}
+                </div>
+            {{ end }}
+            
+            {{/* Collapsible series list */}}
+            <details class="series-list">
+                <summary>
+                    View all {{ len $seriesPosts }} posts in this series
+                </summary>
+                <ol>
+                    {{ range $index, $post := $seriesPosts }}
+                        <li>
+                            {{ if eq $post.Permalink $currentPost.Permalink }}
+                                <strong>{{ add $index 1 }}. {{ $post.Title }} (current)</strong>
+                            {{ else }}
+                                <a href="{{ $post.Permalink }}">{{ add $index 1 }}. {{ $post.Title }}</a>
+                            {{ end }}
+                        </li>
+                    {{ end }}
+                </ol>
+            </details>
+        </div>
+    {{ end }}
+{{ end }} 
